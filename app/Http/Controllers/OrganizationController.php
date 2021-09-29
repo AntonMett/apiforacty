@@ -71,11 +71,13 @@ class OrganizationController extends Controller
                 $organization = new Organization();
                 $organization->org_name = $org;
                 $organization->save();
+
             }
             $daughters = Relation::query()->where('parent_id', $neworganization->id)->select('org_name')->get();
+            return ['org_name' => $neworganization->org_name, 'daughters' => $daughters];
         }
 
-        return ['org_name' => $neworganization->org_name, 'daughters' => $daughters];
+        return ['org_name' => $neworganization->org_name];
     }
 
     /**
