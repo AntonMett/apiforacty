@@ -53,6 +53,7 @@ class OrganizationController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'org_name' => 'required|filled',
+            'parent_of' => 'array',
         ]);
 
         if ($validator->fails()) {
